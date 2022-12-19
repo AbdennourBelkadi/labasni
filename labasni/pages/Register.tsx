@@ -122,11 +122,12 @@ alert("User Saved, please login")
             <Button
               type="submit"
               fullWidth
+              
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={!validateForm()}
             >
-             <Link href="/"> Sign Up</Link>
+             <Link href="/"> Signin</Link>
             </Button>
             <Button
               type="submit"
