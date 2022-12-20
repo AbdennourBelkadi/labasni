@@ -22,9 +22,9 @@ const handleToggle = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  return (  <Grid xs={2.5} >
+  return (  <Grid xs={3} >
         
-         <Card sx={{ maxWidth: 250 } }
+         <Card sx={{ml:6,mt: 3, maxWidth: 250 } }
          
          >
       <CardMedia
