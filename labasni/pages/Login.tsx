@@ -80,7 +80,7 @@ async function handleSubmit(event:any){
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Signin
           </Typography>
           <Box component="form" noValidate   sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -123,7 +123,7 @@ async function handleSubmit(event:any){
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/Register" variant="body2">
-                  Already have an account? Sign in
+                  Already have an account? Sign up
                 </Link>
               </Grid>
             </Grid>
