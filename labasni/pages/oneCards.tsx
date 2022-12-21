@@ -13,8 +13,14 @@ import Backdrop from '@mui/material/Backdrop';
 // import Link from '@mui/material/Link';
 import Link from "next/link";
 
+
 export default function OneProduct({ e }) {
   const [open, setOpen] = React.useState(false);
+  const [prod, setProd]= useState({})
+  const user = localStorage.getItem("id");
+  
+
+  console.log(e);
   
   const handleToggle = () => {
     setOpen(!open);
@@ -23,6 +29,7 @@ export default function OneProduct({ e }) {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (<Grid xs={2.5} >
 
     <Card sx={{ maxWidth: 250 }}
@@ -74,15 +81,17 @@ export default function OneProduct({ e }) {
       </Backdrop>
       <CardActions>
         <Button size="small">💖</Button>
-        
-        <Button size="small"><Link
-          href={{
-            pathname: "/Cart",
-            query: e, // the data
-          }}
-        >
-          Buy
-        </Link></Button>
+
+        <Button size="small"
+          onClick={() => {
+            setProd(e)
+            axios.put(`http://localhost:5000/api/users/cart/${user}`,{cart:e});
+            console.log("produit====>" + prod);
+
+            console.log("id ====>" + user);
+          }}>
+            Buy
+          </Button>
       </CardActions>
     </Card>
 

@@ -17,6 +17,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 
 function Copyright(props: any) {
+
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright Â© '}
@@ -57,6 +58,8 @@ async function handleSubmit(event:any){
       router.push("/Home")
        localStorage.setItem("token", user.data.token);
       localStorage.setItem("id", user.data.id);
+      localStorage.setItem("user", user.data);
+
     }
   } catch (error) {
     console.log(error);

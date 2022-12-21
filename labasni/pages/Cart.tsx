@@ -10,14 +10,23 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
 export default function Cart() {
+  const [uu, setUu] = useState();
+  const [prod, setProd]= useState({})
   const [data, setData] = useState<any>([]);
   const router = useRouter();
   const e = router.query;
 
   useEffect(() => {
-    setData([e, ...data])
+    const user = localStorage.getItem("id");
+    setUu(user)
+    axios.get(`http://localhost:5000/api/users/getuser/${user}`)
+    .then(res =>{
+      setData(res.data.cart)
+       console.log(res.data.cart)});
+
   }, []);
 
 
@@ -26,7 +35,7 @@ export default function Cart() {
   return (
     <div>
     {
-      data.map((el) => {
+      data.map((el:any) => {
         return (
           <div>
             <div className="py-2">
@@ -57,6 +66,17 @@ export default function Cart() {
                 <Link href="/Product" >buy</Link>
               </Button>
             </div>
+            {/* <div className="card p-5">
+              <Button variant="contained" endIcon={<BeenhereIcon />}
+              onClick={() => {
+                setProd(el)
+               console.log("===>" + el);
+                axios.delete(`http://localhost:5000/api/users/cart/${uu}`,{cart:prod});
+              
+              }}>
+                <Link href="/Cart" >Remove</Link>
+              </Button>
+            </div> */}
           </div>
         )
       }
