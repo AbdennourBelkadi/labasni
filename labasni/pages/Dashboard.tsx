@@ -16,6 +16,8 @@ import FilledInput from "@mui/material/FilledInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useRouter } from "next/router";
 import Alert from '@mui/material/Alert';
+import { Backdrop } from "@mui/material";
+import One from "../comps/One";
 
 
 const Img = styled("img")({
@@ -37,13 +39,27 @@ interface Products {
 
 const Dashboard = (event: any) => {
   const [products, setProducts] = useState<Products[]>([]);
+  const [chosen,setChosen]=useState({})
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
- 
+  const [open, setOpen] = React.useState(false);
+console.log(chosen );
+
+
+  const handleToggle = (e) => {
+    console.log(e);
+
+    setOpen(!open);
+
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const router = useRouter();
   // async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
   //   event.preventDefault();
@@ -75,10 +91,11 @@ const Dashboard = (event: any) => {
           size: size,
           color: color,
         })
-       if (user) {
-      router.push("/Dashboard")
-    localStorage.setItem("token", user.data.token);
-    localStorage.setItem("id", user.data.id);}
+      if (user) {
+        router.push("/Dashboard")
+        localStorage.setItem("token", user.data.token);
+        localStorage.setItem("id", user.data.id);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -124,8 +141,10 @@ const Dashboard = (event: any) => {
             id="brand"
             label="Brand"
             defaultValue="Enter Your Brand Name"
-            onChange={(el) => {setBrand(el.target.value)
-            console.log(brand)}}
+            onChange={(el) => {
+              setBrand(el.target.value)
+              console.log(brand)
+            }}
           />
 
           <TextField
@@ -143,8 +162,10 @@ const Dashboard = (event: any) => {
             label="Color"
             defaultValue="Choose your color"
             helperText="Choose your color"
-            onChange={(el) => {setColor(el.target.value)
-            console.log(color)}}
+            onChange={(el) => {
+              setColor(el.target.value)
+              console.log(color)
+            }}
           />
           <TextField
             value={size}
@@ -211,13 +232,20 @@ const Dashboard = (event: any) => {
                         onClick={() => {
                           axios.delete(
                             `http://localhost:5000/api/clothes/${e._id}`
-                          ).then((res)=> {console.log(res)
-                          window.location.reload()})
-                          
+                          ).then((res) => {
+                            console.log(res)
+                            window.location.reload()
+                          })
+
                         }}
                       >
                         Remove
                       </Button>
+                      <Button
+                        sx={{ cursor: "pointer" }}
+                        variant="body2"
+                        onClick={() => {handleToggle(e),setChosen(e)}}>Update</Button>
+
                     </Grid>
                   </Grid>
                   <Grid item>
@@ -227,6 +255,7 @@ const Dashboard = (event: any) => {
                   </Grid>
                 </Grid>
               </Grid>
+              <One e={chosen } open={open}  handleClose={handleClose} handleToggle={handleToggle}/>
             </Paper>
           );
         })}
