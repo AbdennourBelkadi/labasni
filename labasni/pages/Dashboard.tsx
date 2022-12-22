@@ -16,6 +16,8 @@ import FilledInput from "@mui/material/FilledInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useRouter } from "next/router";
 import Alert from '@mui/material/Alert';
+import { Backdrop } from "@mui/material";
+import One from "../comps/One";
 
 
 const Img = styled("img")({
@@ -37,12 +39,28 @@ interface Products {
 
 const Dashboard = (event: any) => {
   const [products, setProducts] = useState<Products[]>([]);
+  const [chosen,setChosen]=useState({})
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+
+  const [open, setOpen] = React.useState(false);
+console.log(chosen );
+
+
+  const handleToggle = (e) => {
+    console.log(e);
+
+    setOpen(!open);
+
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   const router = useRouter();
   // async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -225,6 +243,11 @@ const Dashboard = (event: any) => {
                       >
                         Remove
                       </Button>
+                      <Button
+                        sx={{ cursor: "pointer" }}
+                        variant="body2"
+                        onClick={() => {handleToggle(e),setChosen(e)}}>Update</Button>
+
                     </Grid>
                   </Grid>
                   <Grid item>
@@ -234,6 +257,7 @@ const Dashboard = (event: any) => {
                   </Grid>
                 </Grid>
               </Grid>
+              <One e={chosen } open={open}  handleClose={handleClose} handleToggle={handleToggle}/>
             </Paper>
           );
         })}

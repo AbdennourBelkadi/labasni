@@ -22,17 +22,17 @@ function createOne(req, res) {
 }
 
 function updateOne(req, res) {
-    console.log(req.params);
+    console.log(req.params, req.body);
 
     clothes
         .findOneAndUpdate(
             { _id: req.params.id },
             {
                 name: req.body.name,
-                imageUrl: req.body.imageUrl,
+                imageUrl: req.body.image,
                 price: req.body.price,
-                size: req.body.size,
-                color: req.body.color,
+    
+                brand: req.body.brand
             }
         )
         .then(() => {
