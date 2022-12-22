@@ -90,7 +90,7 @@ const updateCart = async(req, res) => {
 const deleteCart = async(req, res) => {
   try{
     await users.updateMany(
-    {_id:req.params.id},
+    {_id:req.params.user},
     {$pull:{"cart":req.body.cart}})
     
     res.status(200).send("cart deleted")
