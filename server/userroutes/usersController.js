@@ -65,7 +65,42 @@ const register = async (req, res) => {
     res.status(500).send(error);
   }
 }
-module.exports = { register, login };
+const getUser = async(req, res) => {
+  try{
+    let data = await users.findOne(
+    {_id:req.params.user},)
+    res.status(200).send(data)
+  }
+  catch (error) {
+    res.status(500).send(error);
+  }
+ 
+}
+const updateCart = async(req, res) => {
+  try{
+    await users.updateMany(
+    {_id:req.params.user},
+    {$push:{"cart":req.body.cart}})
+    res.status(200).send("updted cart")
+  }
+  catch (error) {
+    res.status(500).send(error);
+  }
+}
+const deleteCart = async(req, res) => {
+  try{
+    await users.updateMany(
+    {_id:req.params.id},
+    {$pull:{"cart":req.body.cart}})
+    
+    res.status(200).send("cart deleted")
+  }
+  catch (error) {
+    res.status(500).send(error);
+  }
+}
+
+module.exports = { register, login, updateCart,deleteCart,getUser };
 
 
 

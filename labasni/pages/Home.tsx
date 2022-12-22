@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel} from 'react-responsive-carousel';
 
-   export default function Home() {
+
+export default function Home(){
         return (
-          <Carousel>
+          <Carousel >
             <div>
-              <img src="https://cdn.britannica.com/50/213250-050-02322AA8/Nike-logo.jpg" />
+              <img src="https://underarmour.scene7.com/is/image/Underarmour/FW22_Gifting_Tile_Men_1_1?qlt=75&fmt=jpg&scl=1&" />
               <p className="legend">NIKE</p>
             </div>
             <div>
-              <img src="https://i0.wp.com/cultofcalcio.com/wp-content/uploads/2020/09/higuain_1599006652.jpg?resize=900%2C400&ssl=1" />
+              <img src="https://www.sportsdirect.com/images/products/59853441_l_a1.jpg" />
               <p className="legend">Football</p>
             </div>
             <div>
-              <img src="https://www.dontwasteyourmoney.com/wp-content/uploads/2022/03/AdobeStock_455693064-scaled-e1648762469950-900x400.jpeg" />
+              <img src="https://www.madina.dz/wp-content/uploads/2022/03/XA048_2_ZC1-650x650.jpg" />
               <p className="legend">Basketball</p>
             </div>
             <div>
-              <img src="https://underarmour.scene7.com/is/image/Underarmour/FW22_Gifting_Tile_Men_1_1?qlt=75&fmt=jpg&scl=1&" />
+              <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ca1efddf-5e04-4af7-95c3-85b0ab29b63b/react-pegasus-trail-4-gore-tex-mens-waterproof-trail-running-shoes-qdcSR6.png"
+               />
               <p className="legend">training</p>
             </div>
             <div>
               <p className="legend">UNDERARMOUR</p>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuQOadd1mMitu3an90ysRj6HkHAKS032uUGA&usqp=CAU" />
+              <img src="https://www.trigema.de/out/pictures/generated/ddmedia/726_726_100/fvf_37201_046_H.jpg" />
             </div>
             {/* <div>
               <img src="https://cdn.about.puma.com/img/layout/Logo_PUMA-Cat_dark.svg"/>
@@ -33,4 +34,5 @@ import { Carousel } from 'react-responsive-carousel';
           </Carousel>
         );
     }
+    
 

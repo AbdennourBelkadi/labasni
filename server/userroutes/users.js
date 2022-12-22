@@ -7,7 +7,8 @@ var usersSchema = mongoose.Schema({
     name:String,
     email:String,
     password:String,
-    card:{type:Number, default:0}
+    card:{type:Number, default:0},
+    cart:[],
 });
  
 

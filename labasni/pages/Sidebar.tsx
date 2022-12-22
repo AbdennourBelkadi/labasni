@@ -137,6 +137,7 @@ export default function TemporaryDrawer() {
           </FormGroup>
         </ListItem>
       </List>
+      
       <Button variant="contained" color="success">
         <Link href="/Products" onClick={handleToggle}>
           Submit Search
