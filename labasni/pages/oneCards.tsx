@@ -30,11 +30,12 @@ export default function OneProduct({ e }) {
     setOpen(false);
   };
 
-  return (<Grid xs={2.5} >
+  return (  <Grid xs={3} >
+        
+         <Card sx={{ml:6,mt: 3, maxWidth: 250 } }
+         
+         >
 
-    <Card sx={{ maxWidth: 250 }}
-
-    >
       <CardMedia
         component="img"
         height="250"
