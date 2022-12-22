@@ -16,6 +16,7 @@ import OneProduct from './oneCards';
 export default function Products(){
 const [open, setOpen] = React.useState(false);
 const [data,setData]=useState([])
+
 const [post,setpost]=useState([])
   function getData(){
     axios.get("http://localhost:5000/api/clothes").then(res =>{

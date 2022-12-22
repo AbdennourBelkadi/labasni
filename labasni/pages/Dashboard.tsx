@@ -46,6 +46,7 @@ const Dashboard = (event: any) => {
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+
   const [open, setOpen] = React.useState(false);
 console.log(chosen );
 
@@ -59,6 +60,7 @@ console.log(chosen );
   const handleClose = () => {
     setOpen(false);
   };
+
 
   const router = useRouter();
   // async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
