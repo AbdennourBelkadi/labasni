@@ -16,6 +16,8 @@ export default function Cart() {
   const [uu, setUu] = useState();
   const [prod, setProd]= useState({})
   const [data, setData] = useState<any>([]);
+  const [total, setTotal] = useState<any>();
+
   const router = useRouter();
   const e = router.query;
 
@@ -25,15 +27,22 @@ export default function Cart() {
     axios.get(`http://localhost:5000/api/users/getuser/${user}`)
     .then(res =>{
       setData(res.data.cart)
-       console.log(res.data.cart)});
+       console.log(res.data.cart)
+       const getTotal = (res.data.cart.reduce((acc, item) => acc + item.price, 0)).toFixed(2)
+       setTotal(getTotal)
+       console.log(getTotal)
+      });
+     
 
+
+      
   }, []);
-
-
-  console.log(e)
 
   return (
     <div>
+      <div>
+      <h1>the total is : {total} $</h1>
+    </div>
     {
       data.map((el:any) => {
         return (
@@ -66,22 +75,24 @@ export default function Cart() {
                 <Link href="/Product" >buy</Link>
               </Button>
             </div>
-            {/* <div className="card p-5">
+            <div className="card p-5">
               <Button variant="contained" endIcon={<BeenhereIcon />}
               onClick={() => {
                 setProd(el)
                console.log("===>" + el);
-                axios.delete(`http://localhost:5000/api/users/cart/${uu}`,{cart:prod});
+                axios.delete(`http://localhost:5000/api/users/cart/${uu}`,{cart:el});
               
               }}>
                 <Link href="/Cart" >Remove</Link>
               </Button>
-            </div> */}
+            </div>
+            
           </div>
         )
       }
       )
     }
+    
     </div>
     )
 }

@@ -22,9 +22,20 @@ const pages = ['Home', 'Products', 'About us', "cart", "login"];
 // const pages = [{name:"Home", path:"http://localhost:3000/home"}]
 
 function ResponsiveAppBar() {
+  
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [uu,setUu] = React.useState();
+  React.useEffect(() => {
+    const user = localStorage.getItem("id");
+    setUu(user);
+  }, []);
+  const Logout =()=>{
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    window.location.reload();
 
+  }
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -144,8 +155,10 @@ function ResponsiveAppBar() {
                 </Button>
 
               </Box>
-              <Box  sx={{ flexGrow: 0 }}>
+              
 
+                {(uu)?
+                <Box  sx={{ flexGrow: 0 }}>
                 <Button variant="contained" color="secondary" endIcon={<AddShoppingCartIcon />}>
 
                   <Link href="/Cart">cart </Link>
@@ -154,12 +167,23 @@ function ResponsiveAppBar() {
                 
                 <Tooltip title="Logout">
 
+                  <Button variant="contained" endIcon={<LogoutIcon />}
+                  onClick={()=>{Logout()}}>
+                    <Link href="/"> Logout</Link>
+                  </Button>
+                  
+                </Tooltip> 
+                </Box>:
+                <Box  sx={{ flexGrow: 0 }}>
+                <Tooltip title="Logout">
+
                   <Button variant="contained" endIcon={<LogoutIcon />}>
                     <Link href="/Login"> Login</Link>
                   </Button>
-
+                  
                 </Tooltip>
-              </Box>
+                </Box>}
+              
             </Toolbar>
           </Container>
         </AppBar>

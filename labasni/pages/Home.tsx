@@ -4,6 +4,10 @@ import { Carousel} from 'react-responsive-carousel';
 
 
 export default function Home(){
+  // React.useEffect(() => {
+  //   window.location.reload();
+  // }, []);
+
         return (
           <Carousel >
             <div>

@@ -33,6 +33,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Login() {
+  
   const router = useRouter()
 
     const [email, setEmail] = useState("");
@@ -59,7 +60,7 @@ async function handleSubmit(event:any){
        localStorage.setItem("token", user.data.token);
       localStorage.setItem("id", user.data.id);
       localStorage.setItem("user", user.data);
-
+      
     }
   } catch (error) {
     console.log(error);
@@ -83,7 +84,7 @@ async function handleSubmit(event:any){
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Signin
+            Login
           </Typography>
           <Box component="form" noValidate   sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -121,7 +122,7 @@ async function handleSubmit(event:any){
               disabled={!validateForm()}
               onClick={handleSubmit}
             >
-               Sign Up 
+               Login 
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
